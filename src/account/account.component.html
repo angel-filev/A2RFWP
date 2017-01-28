@@ -1,0 +1,10 @@
+<div class="container">
+    <h3>Account Form</h3>
+    <form #form="ngForm" novalidate>
+        <div class="form-group"></div>
+        <label>First Name</label>
+        <input #firstName type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" >
+        <h3>Classes</h3>
+        <h4>{{firstName.className}}</h4>
+    </form>
+</div>

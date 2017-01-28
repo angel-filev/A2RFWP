@@ -1,0 +1,7 @@
+.idea/
+src/**/*.js
+src/**/*.map
+node_modules
+aot/*
+dist/*
+
