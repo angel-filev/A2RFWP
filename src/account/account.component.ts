@@ -1,6 +1,5 @@
 /// <reference path='../../node_modules/@types/node/index.d.ts' />
-import {ActivatedRoute} from '@angular/router';
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import {Account} from "./account.model";
 
@@ -9,19 +8,13 @@ import {Account} from "./account.model";
     templateUrl: 'account.component.html',
     styleUrls: ['account.component.css']
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent {
 
-    public model: Account = new Account();
+    public languages = ['English', 'Spanish', 'Other'];
+    public model = new Account('', '', false, '', 'default');
+    public hasPrimaryLanguageError = false;
 
-    constructor(
-        private route: ActivatedRoute) {
-    }
-
-    public submitAccount(): void {
-
-    }
-
-    public ngOnInit(): void {
-
+    public validatePrimaryLanguage(value: any) {
+        this.hasPrimaryLanguageError = value === 'default';
     }
 }

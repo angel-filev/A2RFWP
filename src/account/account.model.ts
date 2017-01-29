@@ -1,6 +1,12 @@
 
 export class Account {
-    public firstName: number;
-    public lastName: string;
-    public occupation: string;
+    constructor(
+        public firstName: string,
+        public lastName: string,
+        public isFullTime: boolean,
+        public paymentType: string,
+        public primaryLanguage: string
+    ) {
+
+    }
 }
