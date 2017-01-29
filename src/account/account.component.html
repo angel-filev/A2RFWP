@@ -1,6 +1,6 @@
 <div class="container">
     <h3>Account Form</h3>
-    <form #form="ngForm" novalidate>
+    <form #form="ngForm" (submit)="submitAccount(form)" novalidate>
 
         <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched">
             <label for="firstName" class="control-label">First Name</label>

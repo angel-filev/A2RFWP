@@ -7,11 +7,15 @@ import {AppComponent} from './app.component';
 import {AccountComponent} from "../account/account.component";
 import {HomeComponent} from "../home/home.component";
 import {PageNotFoundComponent} from "../page-not-found/page-not-found.component";
+import {AccountService} from "../account/account.service";
+import {HttpModule} from "@angular/http";
+
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
+        HttpModule,
         RoutingModule
     ],
     declarations: [
@@ -19,8 +23,10 @@ import {PageNotFoundComponent} from "../page-not-found/page-not-found.component"
         AccountComponent,
         HomeComponent,
         PageNotFoundComponent
+
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [AccountService]
 })
 export class AppModule {
 }
