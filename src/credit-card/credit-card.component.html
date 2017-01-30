@@ -1,0 +1,39 @@
+<div class="container">
+    <div [hidden]="submitted">
+        <h1>Credit Card</h1>
+        <form #creditCardForm="ngForm"  *ngIf="active"  (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control"
+                       required minlength="4" maxlength="24"
+                       name="name" [(ngModel)]="creditCard.name" >
+                <div *ngIf="formErrors.name" class="alert alert-danger">
+                    {{ formErrors.name }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="brand">Credit Card Brand</label>
+                <select id="brand" class="form-control"
+                        name="brand"
+                        [(ngModel)]="creditCard.brand" required >
+                    <option *ngFor="let p of brands" [value]="p">{{p}}</option>
+                </select>
+                <div *ngIf="formErrors.brand" class="alert alert-danger">
+                    {{ formErrors.brand }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="creditCardNumber">Number</label>
+                <input type="text" id="creditCardNumber" class="form-control"
+                       name="creditCardNumber"
+                       [(ngModel)]="creditCard.creditCardNumber" >
+            </div>
+            <button type="submit" class="btn btn-default"
+                    [disabled]="!creditCardForm.form.valid">Submit</button>
+            <button type="button" class="btn btn-default"
+                    (click)="addCreditCard()">New Credit Card</button>
+        </form>
+    </div>
+
+    <credit-card-submitted [creditCard]="creditCard" [(submitted)]="submitted"></credit-card-submitted>
+</div>

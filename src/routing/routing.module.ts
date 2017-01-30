@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
 import { AccountComponent } from '../account/account.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+import {CreditCardComponent} from "../credit-card/credit-card.component";
 
 // Pulls the routes into a variable. You might export it in future and it clarifies the Routing Module pattern.
 const routes: Routes = [
     { path: '',  component: HomeComponent },
     { path: 'account', component: AccountComponent },
+    { path: 'credit-card', component: CreditCardComponent },
     { path: '**', component: PageNotFoundComponent }
 ];
 

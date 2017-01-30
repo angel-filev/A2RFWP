@@ -9,6 +9,8 @@ import {HomeComponent} from "../home/home.component";
 import {PageNotFoundComponent} from "../page-not-found/page-not-found.component";
 import {AccountService} from "../account/account.service";
 import {HttpModule} from "@angular/http";
+import {CreditCardComponent} from "../credit-card/credit-card.component";
+import {SubmittedComponent} from "../credit-card/submitted.component";
 
 
 @NgModule({
@@ -21,8 +23,10 @@ import {HttpModule} from "@angular/http";
     declarations: [
         AppComponent,
         AccountComponent,
+        CreditCardComponent,
         HomeComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        SubmittedComponent
 
     ],
     bootstrap: [AppComponent],
