@@ -1,12 +1,18 @@
 <div class="container">
-    <div [hidden]="submitted">
-        <h1>Credit Card</h1>
-        <form #creditCardForm="ngForm"  *ngIf="active"  (ngSubmit)="onSubmit()">
+    <!-- <div [hidden]="submitted">-->
+    <div>
+        <form #creditCardForm="ngForm" *ngIf="active" (ngSubmit)="onSubmit()">
+            <div *ngIf="submitted && !creditCardForm.form.valid" class="alert alert-danger">Please fix the flowing errors:
+                <pre>  valid:  {{creditCardForm.form.valid | json}}</pre>
+                <pre>  pristine: {{creditCardForm.form.pristine | json}}</pre>
+                <pre>  submitted: {{submitted | json}}</pre>
+            </div>
+            <h1>Credit Card</h1>
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" class="form-control"
                        required minlength="4" maxlength="24"
-                       name="name" [(ngModel)]="creditCard.name" >
+                       name="name" [(ngModel)]="creditCard.name">
                 <div *ngIf="formErrors.name" class="alert alert-danger">
                     {{ formErrors.name }}
                 </div>
@@ -15,7 +21,7 @@
                 <label for="brand">Credit Card Brand</label>
                 <select id="brand" class="form-control"
                         name="brand"
-                        [(ngModel)]="creditCard.brand" required >
+                        [(ngModel)]="creditCard.brand" required>
                     <option *ngFor="let p of brands" [value]="p">{{p}}</option>
                 </select>
                 <div *ngIf="formErrors.brand" class="alert alert-danger">
@@ -25,15 +31,18 @@
             <div class="form-group">
                 <label for="creditCardNumber">Number</label>
                 <input type="text" id="creditCardNumber" class="form-control"
+                       required minlength="15" maxlength="20"
                        name="creditCardNumber"
-                       [(ngModel)]="creditCard.creditCardNumber" >
+                       [(ngModel)]="creditCard.creditCardNumber">
+                <div *ngIf="formErrors.creditCardNumber" class="alert alert-danger">
+                    {{ formErrors.creditCardNumber }}
+                </div>
             </div>
-            <button type="submit" class="btn btn-default"
-                    [disabled]="!creditCardForm.form.valid">Submit</button>
+            <button type="submit" class="btn btn-default" [disabled]="!creditCardForm.form.valid">Submit</button>
             <button type="button" class="btn btn-default"
-                    (click)="addCreditCard()">New Credit Card</button>
+                    (click)="addCreditCard()">New Credit Card
+            </button>
         </form>
     </div>
-
     <credit-card-submitted [creditCard]="creditCard" [(submitted)]="submitted"></credit-card-submitted>
 </div>

@@ -15,6 +15,10 @@ export class CreditCardComponent implements AfterViewChecked {
 
     public submitted = false;
 
+    public validateForm(){
+        this.formChanged();
+    }
+
     public onSubmit() {
         this.submitted = true;
     }
@@ -27,7 +31,6 @@ export class CreditCardComponent implements AfterViewChecked {
 
     public addCreditCard() {
         this.creditCard = new CreditCard(42, '', '');
-
         this.active = false;
         setTimeout(() => this.active = true, 0);
     }
@@ -40,7 +43,9 @@ export class CreditCardComponent implements AfterViewChecked {
     }
 
     public formChanged() {
-        if (this.currentForm === this.creditCardForm) { return; }
+        if (this.currentForm === this.creditCardForm) {
+            return;
+        }
         this.creditCardForm = this.currentForm;
         if (this.creditCardForm) {
             this.creditCardForm.valueChanges
@@ -49,14 +54,14 @@ export class CreditCardComponent implements AfterViewChecked {
     }
 
     public onValueChanged(data?: any) {
-        if (!this.creditCardForm) { return; }
+        if (!this.creditCardForm) {
+            return;
+        }
         const form = this.creditCardForm.form;
-
         for (const field in this.formErrors) {
             // clear previous error message (if any)
             this.formErrors[field] = '';
             const control = form.get(field);
-
             if (control && control.dirty && !control.valid) {
                 const messages = this.validationMessages[field];
                 for (const key in control.errors) {
@@ -68,18 +73,23 @@ export class CreditCardComponent implements AfterViewChecked {
 
     public formErrors = {
         'name': '',
-        'brand': ''
+        'brand': '',
+        'creditCardNumber': ''
     };
 
     public validationMessages = {
         'name': {
             'required':      'Name is required.',
             'minlength':     'Name must be at least 4 characters long.',
-            'maxlength':     'Name cannot be more than 24 characters long.',
-            'forbiddenName': 'Someone named "Bob" cannot be a creditCard.'
+            'maxlength':     'Name cannot be more than 24 characters long.'
         },
         'brand': {
             'required': 'Credit card association brand is required.'
+        },
+        'creditCardNumber': {
+            'required': 'Credit card number is required.',
+            'minlength': 'Name must be at least 15 characters long.',
+            'maxlength': 'Name cannot be more than 16 characters long.',
         }
     };
 }
