@@ -1,6 +1,6 @@
 /* tslint:disable: member-ordering forin */
 import { Component, AfterViewChecked, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {NgForm, FormGroup} from '@angular/forms';
 import {CreditCard} from "./credit-card.model";
 
 @Component({
@@ -20,7 +20,19 @@ export class CreditCardComponent implements AfterViewChecked {
     }
 
     public onSubmit() {
-        this.submitted = true;
+        let form = this.creditCardForm.form;
+        this.markAllFormControlsAsDirty(form);
+        this.onValueChanged(null);
+        if(form.valid){
+            this.submitted = true;
+        }
+    }
+
+    private markAllFormControlsAsDirty(form:FormGroup) {
+        //form.markAsDirty(true);
+        for (const control in form.controls) {
+            form.get(control).markAsDirty(true);
+        }
     }
 
     // Reset the form with a new creditCard AND restore 'pristine' class state
