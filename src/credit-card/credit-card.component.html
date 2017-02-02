@@ -1,6 +1,6 @@
 <div class="container">
     <div [hidden]="submitted">
-        <form #creditCardForm="ngForm" *ngIf="active" (ngSubmit)="onSubmit()">
+        <form #creditCardForm="ngForm" *ngIf="active" (ngSubmit)="onSubmit()" novalidate>
             <div *ngIf="submitted && !creditCardForm.form.valid" class="alert alert-danger">Please fix the flowing errors:
             </div>
             <h1>Credit Card</h1>
@@ -36,10 +36,10 @@
                 </div>
             </div>
           <!--  <button type="submit" class="btn btn-default" [disabled]="!creditCardForm.form.valid">Submit</button>-->
-            <button type="submit" class="btn btn-default" >Submit</button>
-            <button type="button" class="btn btn-default"
+           <!-- <button type="submit" class="btn btn-default" >Submit</button>-->
+           <!-- <button type="button" class="btn btn-default"
                     (click)="addCreditCard()">New Credit Card
-            </button>
+            </button>-->
         </form>
     </div>
     <credit-card-submitted [creditCard]="creditCard" [(submitted)]="submitted"></credit-card-submitted>

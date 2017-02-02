@@ -1,6 +1,6 @@
 /// <reference path='../../node_modules/@types/node/index.d.ts' />
 ///<reference path="account.service.ts"/>
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import {Account} from "./account.model";
 import {NgForm} from "@angular/forms";
@@ -16,19 +16,21 @@ export class AccountComponent {
     constructor(private accountService: AccountService){
 
     }
+
+    @Input() public account: Account;
+
     public languages = ['English', 'Spanish', 'Other'];
-    public model = new Account('', '', '', false, '', 'default');
     public hasPrimaryLanguageError = false;
 
     public submitAccount(form: NgForm){
         console.log(form);
-        this.validatePrimaryLanguage(this.model.primaryLanguage);
+        this.validatePrimaryLanguage(this.account.primaryLanguage);
         if(this.hasPrimaryLanguageError){
             return;
         }
 
-        if(this.model.id === ''){
-            this.accountService.addAccount(this.model);
+        if(this.account.id === ''){
+            this.accountService.addAccount(this.account);
         }
     }
 

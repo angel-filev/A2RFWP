@@ -5,7 +5,7 @@
         <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched">
             <label for="firstName" class="control-label">First Name</label>
             <input id="firstName" #firstName="ngModel" pattern="...+" required type="text" class="form-control" name="firstName"
-                   [(ngModel)]="model.firstName">
+                   [(ngModel)]="account.firstName">
             <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger">
                 First Name is required, and must be at least 3 characters.
             </div>
@@ -15,13 +15,13 @@
         <div class="form-group">
             <label for="lastName">Last Name</label>
             <input id="lastName" type="text" class="form-control" name="lastName"
-                   [(ngModel)]="model.lastName">
+                   [(ngModel)]="account.lastName">
         </div>
 
         <div class="checkbox">
             <label>
                 <input type="checkbox" name="is-full-time"
-                       [(ngModel)]="model.isFullTime"> Full Time Employee
+                       [(ngModel)]="account.isFullTime"> Full Time Employee
             </label>
         </div>
 
@@ -29,14 +29,14 @@
         <div class="radio">
             <label>
                 <input type="radio" name="paymentType" value="w2" checked
-                       [(ngModel)]="model.paymentType">
+                       [(ngModel)]="account.paymentType">
                 W2
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="paymentType" value="1099"
-                       [(ngModel)]="model.paymentType">
+                       [(ngModel)]="account.paymentType">
                 1099
             </label>
         </div>
@@ -46,7 +46,7 @@
             <select id="primaryLanguage" class="form-control" #primaryLanguage name="primaryLanguage"
                     (blur)="validatePrimaryLanguage(primaryLanguage.value)"
                     (change)="validatePrimaryLanguage(primaryLanguage.value)"
-                    [(ngModel)]="model.primaryLanguage">
+                    [(ngModel)]="account.primaryLanguage">
 
                 <option value="default">Select a Language...</option>
                 <option *ngFor="let lang of languages">
@@ -58,9 +58,8 @@
             </div>
         </div>
 
-        <button class="btn btn-primary" type="submit"
-                [disabled]="form.invalid">Ok
-        </button>
+       <!-- <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Ok</button>-->
+        <button class="btn btn-primary" type="submit" >Ok</button>
     </form>
 
 </div>

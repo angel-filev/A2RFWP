@@ -11,6 +11,8 @@ import {AccountService} from "../account/account.service";
 import {HttpModule} from "@angular/http";
 import {CreditCardComponent} from "../credit-card/credit-card.component";
 import {SubmittedComponent} from "../credit-card/submitted.component";
+import {OrderComponent} from "../order/order.component";
+import {AddressComponent} from "../address/address.component";
 
 
 @NgModule({
@@ -23,8 +25,10 @@ import {SubmittedComponent} from "../credit-card/submitted.component";
     declarations: [
         AppComponent,
         AccountComponent,
+        AddressComponent,
         CreditCardComponent,
         HomeComponent,
+        OrderComponent,
         PageNotFoundComponent,
         SubmittedComponent
 

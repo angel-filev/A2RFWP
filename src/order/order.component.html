@@ -1,0 +1,8 @@
+<div class="container">
+    <div>
+        <h2>Order</h2>
+        <a2d-address  [(address)]="order.address" ></a2d-address>
+        <a2d-credit-card [(creditCard)]="order.creditCard"></a2d-credit-card>
+         <button class="btn btn-default" type="submit" (click)="onSubmit()" >Submit</button>
+    </div>
+</div>
