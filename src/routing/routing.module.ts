@@ -24,10 +24,10 @@ const routes: Routes = [
 //    see https://angular.io/docs/ts/latest/guide/router.html#!#link-parameters-array (search for section called "HashLocationStrategy")
 //    Using  HashLocationStrategy solves the refresh 404 issue that is observed when IIS is trying to resolve angular rendered path.
 //    At the same time it allows application to support IIS for legacy pages.
-/*@NgModule({
+@NgModule({
     imports: [RouterModule.forRoot(routes, { useHash: true }) ],
     exports: [ RouterModule ]
-})*/
+})
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
